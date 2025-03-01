@@ -40,18 +40,17 @@ def passPhrase():
     words = wordCount()
     pw = '_'.join(r.random_words(words, word_min_length=4, word_max_length=7)+(random.choices(special_char, k=1)))
     print("\nYou're generated pasword is: '{}'".format(pw))
-    return pw
     
 def comPW():
     pwLength = passLength()
     allowed_chars = string.ascii_letters + string.digits + string.punctuation
     pw = ''.join(random.choices(allowed_chars, k=pwLength))
     print("\nYou're generated pasword is: '{}'".format(pw))
-    return pw
 
 def main():
-    pwType = ''
     print("I am Jidanbo! I will keep the soul society safe by creating strong and easy to remember passwords to stop the hollows!")
+
+    pwType = ''
     pwType = compVsPhr()
     if pwType == "pp":
         passPhrase()
