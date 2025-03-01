@@ -36,8 +36,9 @@ def wordCount():
 
 def passPhrase():
     r = RandomWord()
+    special_char = string.digits
     words = wordCount()
-    pw = '_'.join(r.random_words(words, word_min_length=4, word_max_length=6))
+    pw = '_'.join(r.random_words(words, word_min_length=4, word_max_length=7)+(random.choices(special_char, k=1)))
     print("\nYou're generated pasword is: '{}'".format(pw))
     return pw
     
