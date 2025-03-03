@@ -17,16 +17,18 @@ def compVsPhr():
 def passLength():
     minLength = 14
     while True:
-        length = int(input("\nHow long do you want your password to be: "))
-        if (length < minLength):
-            print("Your password must be atleast 14 characters long according to the Gotei 13!")
-        else:
-            print("Very Well! Your password shall be {} characters long.".format(length))
-            return length
+        try:
+            length = int(input("\nHow long do you want your password to be: "))
+            if (length < minLength):
+                print("Your password must be atleast 14 characters long according to the Gotei 13!")
+            else:
+                print("Very Well! Your password shall be {} characters long.".format(length))
+                return length
+        except ValueError:
+            print("Invalid input! Please enter a whole number.")
 
 def wordCount():
     minLength = 3
-
     while True:
         try:
             length = int(input("\nHow many words do you want your passphrase to be: "))
