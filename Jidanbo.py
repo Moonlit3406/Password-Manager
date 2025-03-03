@@ -26,21 +26,30 @@ def passLength():
 
 def wordCount():
     minLength = 3
+
     while True:
-        length = int(input("\nHow many words do you want your passphrase to be: "))
-        if (length < minLength):
-            print("Your passphrase must be atleast 3 words long according to the Gotei 13!")
-        else:
-            print("Very Well! Your passphrase shall be {} words long.".format(length))
-            return length
+        try:
+            length = int(input("\nHow many words do you want your passphrase to be: "))
+            if (length >= minLength):
+                print("Very Well! Your passphrase shall be {} words long.".format(length))
+                return length
+            else:
+                print("Your passphrase must be atleast 3 words long according to the Gotei 13!")
+        except ValueError:
+            print("Invalid input! Please enter a whole number.")
 
 def passPhrase():
     r = RandomWord()
-    special_char = string.digits
     words = wordCount()
-    pw = '_'.join(r.random_words(words, word_min_length=4, word_max_length=7)+(random.choices(special_char, k=1)))
-    print("\nYou're generated pasword is: '{}'".format(pw))
-    
+    pp = []
+
+    for i in range(words):
+        ender = (random.choices(string.digits, k=1))+(random.choices(string.punctuation, k=1))
+        pw = r.random_words(amount=1, word_min_length=4, word_max_length=7)[0].capitalize()
+        pp.append(''.join([pw]+ender))
+    pp = '_'.join(pp)
+    print("\nYou're generated pasword is: '{}'".format(pp))
+
 def comPW():
     pwLength = passLength()
     allowed_chars = string.ascii_letters + string.digits + string.punctuation
